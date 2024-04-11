@@ -1,11 +1,15 @@
-package com.xbrain.teste.service;
+package com.xbrain.producer.service;
 
-import com.xbrain.teste.config.ConfigureRabbitMq;
+import com.xbrain.producer.config.ConfigureRabbitMq;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
+@Lazy
 public class ProduceMessageService {
 
   @Autowired
@@ -15,9 +19,9 @@ public class ProduceMessageService {
     this.rabbitTemplate = rabbitTemplate;
   }
 
-  public String produceMessage(String message) {
+  public ResponseEntity<String> produceMessage(String message) {
     rabbitTemplate.convertAndSend(ConfigureRabbitMq.EXCHANGE_NAME, "myRoutingKey.messages",
         message);
-    return "Message(" + message + ")" + " has been produced.";
+    return new ResponseEntity<>("enviada", HttpStatus.CREATED);
   }
 }

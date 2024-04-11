@@ -15,7 +15,7 @@ import lombok.Setter;
 public class PedidoDTO {
   private UUID id;
 
-  private Cliente cliente;
+  private UUID clienteId;
 
   private List<UUID> codigoProdutos;
 

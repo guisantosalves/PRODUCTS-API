@@ -1,6 +1,7 @@
-package com.xbrain.main.controller;
+package com.xbrain.main.controllers;
 
 import com.xbrain.main.mapper.ProdutoMapper;
+import com.xbrain.main.schema.ClienteSchema;
 import com.xbrain.main.schema.ProdutoSchema;
 import com.xbrain.main.service.ProdutoService;
 import java.util.List;
@@ -30,6 +31,12 @@ public class ProdutoController {
   public ResponseEntity<List<ProdutoSchema>> findAllprodutos() {
     List<ProdutoSchema> ProdutoSchemas = produtoMapper.toSchemaList(produtoService.findAll());
     return new ResponseEntity<>(ProdutoSchemas, HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/{produtoId}")
+  public ResponseEntity<ProdutoSchema> getOneProduto(@PathVariable UUID produtoId){
+    ProdutoSchema produtoSchema = produtoMapper.toSchema(produtoService.findOne(produtoId));
+    return new ResponseEntity<>(produtoSchema, HttpStatus.OK);
   }
 
   @PostMapping

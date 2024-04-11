@@ -10,8 +10,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProdutoSchema {
-
+public class EntregaSchema {
   private UUID id;
-  private double valor;
+
+  private UUID pedido;
+
+  private String enderecoEntrega;
 }

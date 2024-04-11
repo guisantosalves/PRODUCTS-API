@@ -1,4 +1,4 @@
-package com.xbrain.teste.config;
+package com.xbrain.producer.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

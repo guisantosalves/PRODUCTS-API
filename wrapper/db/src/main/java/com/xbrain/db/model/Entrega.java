@@ -1,6 +1,7 @@
 package com.xbrain.db.model;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -24,11 +25,13 @@ import lombok.Setter;
 public class Entrega {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
+  @Column(name = "id")
   private UUID id;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "pedido_id")
   private Pedido pedido;
 
+  @Column(name = "enderecoEntrega")
   private String enderecoEntrega;
 }

@@ -12,7 +12,7 @@ public class ConfigureRabbitMq {
   public static final String QUEUE_NAME = "myQueue";
 
   @Bean
-  SimpleMessageListenerContainer simpleMessageListenerContainer(ConnectionFactory connectionFactory,
+  public SimpleMessageListenerContainer simpleMessageListenerContainer(ConnectionFactory connectionFactory,
       MessageListenerAdapter messageListenerAdapter) {
     SimpleMessageListenerContainer simpleMessageListenerContainer =
         new SimpleMessageListenerContainer();
@@ -23,7 +23,7 @@ public class ConfigureRabbitMq {
   }
 
   @Bean
-  MessageListenerAdapter messageListenerAdapter(ConsumeMessageService consumeMessageService) {
+  public MessageListenerAdapter messageListenerAdapter(ConsumeMessageService consumeMessageService) {
     return new MessageListenerAdapter(consumeMessageService, "consumeMessage");
   }
 }

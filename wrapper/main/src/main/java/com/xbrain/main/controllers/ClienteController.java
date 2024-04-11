@@ -1,4 +1,4 @@
-package com.xbrain.main.controller;
+package com.xbrain.main.controllers;
 
 import com.xbrain.main.mapper.ClienteMapper;
 import com.xbrain.main.schema.ClienteSchema;
@@ -33,6 +33,12 @@ public class ClienteController {
   public ResponseEntity<List<ClienteSchema>> findAllClientes() {
     List<ClienteSchema> clienteSchemas = clienteMapper.toSchemaList(clienteService.findAll());
     return new ResponseEntity<>(clienteSchemas, HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/{clienteId}")
+  public ResponseEntity<ClienteSchema> getOneCliente(@PathVariable UUID clienteId){
+    ClienteSchema clienteSchema = clienteMapper.toSchema(clienteService.findOne(clienteId));
+    return new ResponseEntity<>(clienteSchema, HttpStatus.OK);
   }
 
   @PostMapping

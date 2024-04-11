@@ -1,16 +1,17 @@
-package com.xbrain.consumer;
+package com.xbrain.producer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
-@ComponentScan(basePackages = {"com.xbrain.main", "com.xbrain.consumer"})
-public class ConsumerApplication {
+@SpringBootApplication(scanBasePackages = {"com.xbrain.db"})
+@ComponentScan(basePackages = {"com.xbrain.db", "com.xbrain.producer"})
+@EntityScan("com.xbrain.db")
+public class ProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConsumerApplication.class, args);
+		SpringApplication.run(ProducerApplication.class, args);
 	}
 
 }

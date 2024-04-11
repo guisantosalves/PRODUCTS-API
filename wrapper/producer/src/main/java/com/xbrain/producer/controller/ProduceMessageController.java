@@ -1,19 +1,20 @@
-package com.xbrain.teste.controller;
+package com.xbrain.producer.controller;
 
-import com.xbrain.teste.service.ProduceMessageService;
+import com.xbrain.producer.service.ProduceMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class ProduceMessageController {
 
   @Autowired
   ProduceMessageService produceMessageService;
 
   @PostMapping("/produce")
-  public String produceMessage(@RequestParam String message) {
+  public ResponseEntity<String> produceMessage(@RequestParam String message) {
     return produceMessageService.produceMessage(message);
   }
 }

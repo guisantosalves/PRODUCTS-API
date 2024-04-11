@@ -11,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClienteSchema {
+
   private UUID id;
   private String nome;
 }

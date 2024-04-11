@@ -1,4 +1,4 @@
-package com.xbrain.main.schema;
+package com.xbrain.main.dto;
 
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -10,8 +10,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProdutoSchema {
-
+public class EntregaDTO {
   private UUID id;
-  private double valor;
+
+  private UUID pedido;
+
+  private String enderecoEntrega;
 }

@@ -1,4 +1,4 @@
-package com.xbrain.main.controller;
+package com.xbrain.main.controllers;
 
 import com.xbrain.main.mapper.PedidoMapper;
 import com.xbrain.main.schema.PedidoSchema;
@@ -30,6 +30,12 @@ public class PedidoController {
   @GetMapping
   public ResponseEntity<List<PedidoSchema>> findAllpedidos() {
     List<PedidoSchema> PedidoSchemas = pedidoMapper.toSchemaList(pedidoService.findAll());
+    return new ResponseEntity<>(PedidoSchemas, HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/{pedidoId}")
+  public ResponseEntity<PedidoSchema> findAllpedidos(@PathVariable UUID pedidoId) {
+    PedidoSchema PedidoSchemas = pedidoMapper.toSchema(pedidoService.findOne(pedidoId));
     return new ResponseEntity<>(PedidoSchemas, HttpStatus.OK);
   }
 

@@ -13,13 +13,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PedidoSchema {
+
   private UUID id;
 
-  private Cliente cliente;
+  private UUID clienteId;
 
   private List<UUID> codigoProdutos;
 
-  private double valorTotal;
-
   private String enderecoEntrega;
+
+  private double valorTotal;
 }
